@@ -1,12 +1,13 @@
 <div class="scrollable">  
   <div class="scrollable-content">
 
-    <div class="list-group">
+    <div class="list-group" style="overflow: hidden; width: 100%">
       <div class="list-group-item">
         <h1>Welcome<br/>
         </h1>
       </div>
-      <div class="list-group-item media" ng-show="showFirst" ng-swipe-right="showFirst = false">
+      <div class="list-group-item media" >
+
         <div class="pull-left">
           <i class="fa fa-gamepad feature-icon text-primary"  ></i>
         </div>
@@ -17,7 +18,13 @@
       </div>
 
 
-      <div class="list-group-item media" ng-show="showSecond" ng-swipe-right="showSecond = false">
+      <div  ng-show="showFirst">
+          <div style="width:100px" class="pull-left" ng-show="showFirstHide">
+              <div class="pull-left">
+                  <i class="fa fa-times feature-icon  text-primary" ng-click="showFirst = false;"></i>
+              </div>
+          </div>
+          <div class="list-group-item media"  carousel-example-item  ng-swipe-right="showFirstHide = true" ng-swipe-left="showFirstHide = false">
         <div class="pull-left">
           <i class="fa fa-tachometer feature-icon  text-primary"></i>
         </div>
@@ -25,10 +32,11 @@
             <h3 class="media-heading">Test responsiveness and speed</h3>
             Scroll, tap, navigate, test that everything is smooth
         </div>
+              </div>
       </div>
 
 
-      <div class="list-group-item media" ng-show="showThird" ng-swipe-right="showThird = false">
+      <div class="list-group-item media" carousel-example-item ng-show="showThird">
         <div class="pull-left">
           <i class="fa fa-expand feature-icon  text-primary"></i>
         </div>

@@ -32,11 +32,11 @@ app.directive( "carouselExampleItem", function($rootScope, $swipe){
       var carouselId = element.parent().parent().attr("id");
 
       var translateAndRotate = function(x, y, z, deg){
-        element[0].style["-webkit-transform"] = "translate3d("+x+"px,"+ y +"px," + z + "px) rotate("+ deg +"deg)";
-        element[0].style["-moz-transform"] = "translate3d("+x+"px," + y +"px," + z + "px) rotate("+ deg +"deg)";
-        element[0].style["-ms-transform"] = "translate3d("+x+"px," + y + "px," + z + "px) rotate("+ deg +"deg)";
-        element[0].style["-o-transform"] = "translate3d("+x+"px," + y  + "px," + z + "px) rotate("+ deg +"deg)";
-        element[0].style["transform"] = "translate3d("+x+"px," + y + "px," + z + "px) rotate("+ deg +"deg)";
+        element[0].style["-webkit-transform"] = "translate3d("+x+"px,"+ y +"px," + z + "px) ";
+        element[0].style["-moz-transform"] = "translate3d("+x+"px," + y +"px," + z + "px) ";
+        element[0].style["-ms-transform"] = "translate3d("+x+"px," + y + "px," + z + "px) ";
+        element[0].style["-o-transform"] = "translate3d("+x+"px," + y  + "px," + z + "px) ";
+        element[0].style["transform"] = "translate3d("+x+"px," + y + "px," + z + "px) ";
       }
 
       $swipe.bind(element, {
@@ -54,11 +54,23 @@ app.directive( "carouselExampleItem", function($rootScope, $swipe){
 
         end: function(coords, e) {
           if (endAction == "prev") {
-            $rootScope.carouselPrev(carouselId);
+              translateAndRotate(0, 0, 0, 0);
+
+
+
           } else if (endAction == "next") {
-            $rootScope.carouselNext(carouselId);
+              translateAndRotate(0, 0, 0, 0);
+
+
+
           }
-          translateAndRotate(0, 0, 0, 0);
+            if (coords.x < 0)
+            {
+                translateAndRotate(0, 0, 0, 0);
+            }
+
+
+          //
           e.stopPropagation();
         },
 
