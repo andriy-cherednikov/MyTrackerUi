@@ -2,10 +2,14 @@ var app = angular.module('MobileAngularUiExamples', [
   "ngRoute",
   "ngTouch",
   "mobile-angular-ui",
-    "ngTouch"
+    "ngTouch",
+    "ui.calendar",
 ]);
 app.config(function($routeProvider, $locationProvider) {
   $routeProvider.when('/',          {templateUrl: "home.html"});
+  $routeProvider.when('/login',    {templateUrl: "signin.html"}); 
+  $routeProvider.when('/save',    {templateUrl: "save.html"}); 
+  $routeProvider.when('/calendar',    {templateUrl: "calendar.html"}); 
   $routeProvider.when('/scroll',    {templateUrl: "scroll.html"}); 
   $routeProvider.when('/toggle',    {templateUrl: "toggle.html"}); 
   $routeProvider.when('/tabs',      {templateUrl: "tabs.html"}); 
@@ -94,9 +98,42 @@ app.directive( "carouselExampleItem", function($rootScope, $swipe){
 
 app.controller('MainController', function($rootScope, $scope, analytics){
 
-    $scope.showFirst = true;
-    $scope.showSecond = true;
-    $scope.showThird = true;
+  $scope.uiConfig = {
+      calendar:{
+        height: 450,
+        editable: true,
+        header:{
+          left: 'month basicWeek basicDay agendaWeek agendaDay',
+          center: 'title',
+          right: 'today prev,next'
+        },
+        // dayClick: $scope.alertEventOnClick,
+        // eventDrop: $scope.alertOnDrop,
+        // eventResize: $scope.alertOnResize
+      }
+    };
+
+  $scope.eventSources = [];
+
+  $scope.events = [
+    {id: 1, show: true, icon: "fa-stethoscope", address: "123 Kings Street, Sydney", title: "Free drinks at 77!", date: new Date(2015, 6, 13, 12, 00, 00)},
+    {id: 2, show: true, icon: "fa-tachometer", address: "123 Darling Habour, Sydney", title: "Garage Sale at 23 Kings Street Sydney.", date: new Date(2015, 6, 13, 14, 00, 00)},
+    {id: 3, show: true, icon: "fa-expand", address: "123 Kings Cross, Sydney", title: "Redfern Markets all day today!", date: new Date(2015, 6, 14, 12, 00, 00)},
+    {id: 4, show: true, icon: "fa-stethoscope", address: "123 Hunter Street, Sydney", title: "Free beer forever IndustrieIT", date: new Date(2015, 6, 15, 11, 00, 00)},
+  ]
+
+  $scope.filterFunction = function(event){
+    return event.show;
+  }
+
+  $scope.clickedItem = function(eventId){
+    for (var i=0; i<$scope.events.length; i++){
+      if ($scope.events[i].id == eventId){
+        $scope.events[i].active = true;
+        console.log($scope.events[i]);
+      }  
+    }
+  }
 
   $rootScope.$on("$routeChangeStart", function(){
     $rootScope.loading = true;

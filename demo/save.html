@@ -16,7 +16,7 @@
 
       <div ng-repeat="event in events | filter:filterFunction | filter:search" ng-swipe-right="event.active = true" ng-swipe-left="event.active=false" carousel-example-item>
       <div style="width:100px;" class="pull-left" ng-show="event.active" ng-click="event.show = false">
-                  <i style="color:red;" class="fa fa-times feature-icon text-primary"></i>
+                  <i style="color:green;" class="fa fa-check feature-icon text-primary"></i>
               </div>
       <div class="list-group-item media" >
         
