@@ -4,12 +4,11 @@
     <div class="list-group">
       <div class="list-group-item">
         <h1>Welcome<br/>
-        <small>This is a demo of Mobile Angular UI</small>
         </h1>
       </div>
-      <div class="list-group-item media">
-        <div class="pull-right">
-          <i class="fa fa-gamepad feature-icon text-primary"></i>
+      <div class="list-group-item media" ng-show="showFirst" ng-swipe-right="showFirst = false">
+        <div class="pull-left">
+          <i class="fa fa-gamepad feature-icon text-primary"  ></i>
         </div>
         <div class="media-body">
             <h3 class="media-heading">Play around a little</h3>
@@ -18,8 +17,8 @@
       </div>
 
 
-      <div class="list-group-item media">
-        <div class="pull-right">
+      <div class="list-group-item media" ng-show="showSecond" ng-swipe-right="showSecond = false">
+        <div class="pull-left">
           <i class="fa fa-tachometer feature-icon  text-primary"></i>
         </div>
         <div class="media-body">
@@ -29,8 +28,8 @@
       </div>
 
 
-      <div class="list-group-item media">
-        <div class="pull-right">
+      <div class="list-group-item media" ng-show="showThird" ng-swipe-right="showThird = false">
+        <div class="pull-left">
           <i class="fa fa-expand feature-icon  text-primary"></i>
         </div>
         <div class="media-body">
@@ -40,7 +39,7 @@
       </div>
 
       <div class="list-group-item media">
-        <div class="pull-right">
+        <div class="pull-left">
           <i class="fa fa-stethoscope feature-icon  text-primary"></i>
         </div>
         <div class="media-body">

@@ -1,9 +1,9 @@
 var app = angular.module('MobileAngularUiExamples', [
   "ngRoute",
   "ngTouch",
-  "mobile-angular-ui"
+  "mobile-angular-ui",
+    "ngTouch"
 ]);
-
 app.config(function($routeProvider, $locationProvider) {
   $routeProvider.when('/',          {templateUrl: "home.html"});
   $routeProvider.when('/scroll',    {templateUrl: "scroll.html"}); 
@@ -80,6 +80,10 @@ app.directive( "carouselExampleItem", function($rootScope, $swipe){
 });
 
 app.controller('MainController', function($rootScope, $scope, analytics){
+
+    $scope.showFirst = true;
+    $scope.showSecond = true;
+    $scope.showThird = true;
 
   $rootScope.$on("$routeChangeStart", function(){
     $rootScope.loading = true;
