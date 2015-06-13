@@ -90,3 +90,12 @@ h1 {
 .carousel-inner>.item.active + .item {
   z-index: 1999;
 }
+.green
+{
+  background-color: #ccffcc;
+}
+
+.fa-ticket
+{
+  color:green;
+}

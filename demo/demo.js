@@ -2,8 +2,9 @@ var app = angular.module('MobileAngularUiExamples', [
   "ngRoute",
   "ngTouch",
   "mobile-angular-ui",
-    "ngTouch",
-    "ui.calendar",
+  "ui.calendar",
+    "ngTouch"
+
 ]);
 app.config(function($routeProvider, $locationProvider) {
   $routeProvider.when('/',          {templateUrl: "home.html"});
@@ -58,7 +59,8 @@ app.directive( "carouselExampleItem", function($rootScope, $swipe){
 
         end: function(coords, e) {
           if (endAction == "prev") {
-              translateAndRotate(0, 0, 0, 0);
+
+            translateAndRotate(0, 0, 0, 0);
 
 
 
@@ -106,7 +108,7 @@ app.controller('MainController', function($rootScope, $scope, analytics){
           left: 'month basicWeek basicDay agendaWeek agendaDay',
           center: 'title',
           right: 'today prev,next'
-        },
+        }
         // dayClick: $scope.alertEventOnClick,
         // eventDrop: $scope.alertOnDrop,
         // eventResize: $scope.alertOnResize
@@ -116,10 +118,10 @@ app.controller('MainController', function($rootScope, $scope, analytics){
   $scope.eventSources = [];
 
   $scope.events = [
-    {id: 1, show: true, icon: "fa-stethoscope", address: "123 Kings Street, Sydney", title: "Free drinks at 77!", date: new Date(2015, 6, 13, 12, 00, 00)},
-    {id: 2, show: true, icon: "fa-tachometer", address: "123 Darling Habour, Sydney", title: "Garage Sale at 23 Kings Street Sydney.", date: new Date(2015, 6, 13, 14, 00, 00)},
-    {id: 3, show: true, icon: "fa-expand", address: "123 Kings Cross, Sydney", title: "Redfern Markets all day today!", date: new Date(2015, 6, 14, 12, 00, 00)},
-    {id: 4, show: true, icon: "fa-stethoscope", address: "123 Hunter Street, Sydney", title: "Free beer forever IndustrieIT", date: new Date(2015, 6, 15, 11, 00, 00)},
+    {id: 1, show: true, icon: "fa-stethoscope", address: "123 Kings Street, Sydney", title: "Free drinks at 77!", start: new Date(2015, 5, 13, 12, 00, 00), paid:true},
+    {id: 2, show: true, icon: "fa-tachometer", address: "123 Darling Habour, Sydney", title: "Garage Sale at 23 Kings Street Sydney.", start: new Date(2015, 5, 13, 14, 00, 00),  paid:false},
+    {id: 3, show: true, icon: "fa-expand", address: "123 Kings Cross, Sydney", title: "Redfern Markets all day today!", start: new Date(2015, 5, 14, 12, 00, 00), paid:false},
+    {id: 4, show: true, icon: "fa-stethoscope", address: "123 Hunter Street, Sydney", title: "Free beer forever IndustrieIT", start: new Date(2015, 5, 15, 11, 00, 00), paid:false},
   ]
 
   $scope.filterFunction = function(event){
@@ -180,5 +182,15 @@ app.controller('MainController', function($rootScope, $scope, analytics){
     { name: "Lee Norman", online: false },
     { name: "Ebony Rice", online: false }
   ];
+
+  var date = new Date();
+  var d = date.getDate();
+  var m = date.getMonth();
+  var y = date.getFullYear();
+
+
+
+  $scope.eventSources = [$scope.events];
+
 
 });

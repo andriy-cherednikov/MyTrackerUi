@@ -18,18 +18,19 @@
       <div style="width:100px;" class="pull-left" ng-show="event.active" ng-click="event.show = false">
                   <i style="color:red;" class="fa fa-times feature-icon text-primary"></i>
               </div>
-      <div class="list-group-item media" >
+      <div class="list-group-item media" ng-class="{'green': event.paid}">
         
               
         <div class="pull-left">
-          <i class="fa feature-icon text-primary {{event.icon}}"></i>
+          <i class="fa feature-icon text-primary {{event.icon}}" ng-class="{'fa-ticket':event.paid, event.icon:!event.paid}"></i>
         </div>
         <div class="media-body">
             <h3 class="media-heading">{{ event.title }}</h3>
-            <p>{{ event.date | date : "H:mm d, MMMM"}} </p>
+            <p>{{ event.start | date : "H:mm d, MMMM"}} </p>
             <a href="https://www.google.com.au/maps/place/{{ event.address}}"><p>{{ event.address }}</p></a>
         </div>
       </div>
+
       </div>
 
       <!-- <div ng-show="showFirst">
